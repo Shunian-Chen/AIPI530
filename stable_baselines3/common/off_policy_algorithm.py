@@ -349,7 +349,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
         )
 
         callback.on_training_start(locals(), globals())
-
+        self.save_replay_buffer(save_path + "_replay_buffer")
         while self.num_timesteps < total_timesteps:
             rollout = self.collect_rollouts(
                 self.env,
@@ -362,7 +362,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
             )
             if rollout.continue_training is False:
                 break
-            self.save_replay_buffer(save_path + "_replay_buffer")
+            
             if self.num_timesteps > 0 and self.num_timesteps > self.learning_starts:
                 # If no `gradient_steps` is specified,
                 # do as many gradients steps as steps performed during the rollout
