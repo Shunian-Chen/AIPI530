@@ -376,9 +376,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                                                             "env",
                                                             "rollout_buffer",
                                                             "_vec_normalize_env",
-                                                            "_episode_storage",
-                                                            "_logger",
-                                                            "_custom_logger"])
+                                                            "_episode_storage",])
                 print("Epoch: {}, model saved at {}!".format(self.num_timesteps, save_path))
         callback.on_training_end()
 
