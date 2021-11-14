@@ -358,7 +358,8 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 replay_buffer=self.replay_buffer,
                 log_interval=log_interval,
             )
-
+            print(self.num_timesteps)
+            input()
             if rollout.continue_training is False:
                 break
 
