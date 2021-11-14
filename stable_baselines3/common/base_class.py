@@ -808,7 +808,4 @@ class BaseAlgorithm(ABC):
 
         # Build dict of state_dicts
         params_to_save = self.get_parameters()
-        print("data are: {}".format(data))
-        print("parameters to save are: {}".format(params_to_save))
-        print("pytorch are: {}".format(pytorch_variables))
         save_to_zip_file(path, data=data, params=params_to_save, pytorch_variables=pytorch_variables)
