@@ -239,7 +239,8 @@ class DQN(OffPolicyAlgorithm):
         save_period: int = 100,
         save_path: str = "model"
     ) -> OffPolicyAlgorithm:
-
+        print("save_period in dqn: {}". format(save_period))
+        print("save_path in dqn: {}". format(save_path))
         return super(DQN, self).learn(
             total_timesteps=total_timesteps,
             callback=callback,

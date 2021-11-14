@@ -347,7 +347,8 @@ class OffPolicyAlgorithm(BaseAlgorithm):
             reset_num_timesteps,
             tb_log_name,
         )
-
+        print("save_period in off_policy: {}". format(save_period))
+        print("save_path in off_policy: {}". format(save_path))
         callback.on_training_start(locals(), globals())
         self.save_replay_buffer(save_path + "_replay_buffer")
         while self.num_timesteps < total_timesteps:
@@ -377,7 +378,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                                                             "rollout_buffer",
                                                             "_vec_normalize_env",
                                                             "_episode_storage",])
-                print("Epoch: {}, model saved at {}!".format(self.num_timesteps, save_path))
+                print("Steps: {}, model saved at {}!".format(self.num_timesteps, save_path))
         callback.on_training_end()
 
         return self
