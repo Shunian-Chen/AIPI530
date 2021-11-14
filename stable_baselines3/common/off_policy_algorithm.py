@@ -349,7 +349,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
         )
 
         callback.on_training_start(locals(), globals())
-        self.save_replay_buffer(save_path + "_replay_buffer")
+
         while self.num_timesteps < total_timesteps:
             rollout = self.collect_rollouts(
                 self.env,
@@ -371,7 +371,12 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 if gradient_steps > 0:
                     self.train(batch_size=self.batch_size, gradient_steps=gradient_steps)
             if self.num_timesteps % save_period == 0:
-                self.save(save_path + "_model")
+                self.save(save_path + "_model", include = [ "policy",
+                                                            "device",
+                                                            "env",
+                                                            "eval_env",
+                                                            "replay_buffer",
+                                                            "rollout_buffer"])
         callback.on_training_end()
 
         return self
