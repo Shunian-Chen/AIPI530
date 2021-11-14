@@ -776,7 +776,7 @@ class BaseAlgorithm(ABC):
         """
         # Copy parameter list so we don't mutate the original dict
         data = self.__dict__.copy()
-        print("includes are: {}".format(include))
+
         # Exclude is union of specified parameters (if any) and standard exclusions
         if exclude is None:
             exclude = []
@@ -808,5 +808,7 @@ class BaseAlgorithm(ABC):
 
         # Build dict of state_dicts
         params_to_save = self.get_parameters()
-
+        print("data are: {}".format(data))
+        print("parameters to save are: {}".format(params_to_save))
+        print("pytorch are: {}".format(pytorch_variables))
         save_to_zip_file(path, data=data, params=params_to_save, pytorch_variables=pytorch_variables)
