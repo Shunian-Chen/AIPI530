@@ -333,7 +333,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
         tb_log_name: str = "run",
         eval_log_path: Optional[str] = None,
         reset_num_timesteps: bool = True,
-        save_period: int = 1000,
+        save_period: int = 100,
         save_path: str = "model",
     ) -> "OffPolicyAlgorithm":
 
