@@ -372,7 +372,13 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                     self.train(batch_size=self.batch_size, gradient_steps=gradient_steps)
             if self.num_timesteps % save_period == 0:
                 self.save(save_path + "_model", include = [ "policy",
-                                                            "device"])
+                                                            "device",
+                                                            "env",
+                                                            "rollout_buffer",
+                                                            "_vec_normalize_env",
+                                                            "_episode_storage",
+                                                            "_logger",
+                                                            "_custom_logger"])
                 print("Epoch: {}, model saved at {}!".format(self.num_timesteps, save_path))
         callback.on_training_end()
 
