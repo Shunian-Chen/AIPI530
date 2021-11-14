@@ -347,8 +347,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
             reset_num_timesteps,
             tb_log_name,
         )
-        print("save_period in off_policy: {}". format(save_period))
-        print("save_path in off_policy: {}". format(save_path))
+
         callback.on_training_start(locals(), globals())
         self.save_replay_buffer(save_path + "_replay_buffer")
         while self.num_timesteps < total_timesteps:
