@@ -237,7 +237,7 @@ class DQN(OffPolicyAlgorithm):
         eval_log_path: Optional[str] = None,
         reset_num_timesteps: bool = True,
         save_period: int = 1000,
-        save_path: str
+        save_path: str = "model"
     ) -> OffPolicyAlgorithm:
 
         return super(DQN, self).learn(
