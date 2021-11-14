@@ -332,7 +332,9 @@ class OffPolicyAlgorithm(BaseAlgorithm):
         n_eval_episodes: int = 5,
         tb_log_name: str = "run",
         eval_log_path: Optional[str] = None,
-        reset_num_timesteps: bool = True,
+        reset_num_timesteps: bool = True,,
+        save_period: int = 1000,
+        save_path: str
     ) -> "OffPolicyAlgorithm":
 
         total_timesteps, callback = self._setup_learn(
@@ -358,8 +360,6 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 replay_buffer=self.replay_buffer,
                 log_interval=log_interval,
             )
-            print(self.num_timesteps)
-            input()
             if rollout.continue_training is False:
                 break
 
@@ -370,7 +370,9 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 # Special case when the user passes `gradient_steps=0`
                 if gradient_steps > 0:
                     self.train(batch_size=self.batch_size, gradient_steps=gradient_steps)
-
+            if self.num_timesteps % save_period == 0:
+                self.save(save_path + "_model")
+                self.save_replay_buffer(save_path + "_replay_buffer")
         callback.on_training_end()
 
         return self
