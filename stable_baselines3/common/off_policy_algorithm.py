@@ -374,7 +374,11 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 self.save(save_path + "_model", include = [ "policy",
                                                             "device",
                                                             "env",
-                                                            "eval_env"])
+                                                            "eval_env",
+                                                            "_vec_normalize_env",
+                                                            "_episode_storage",
+                                                            "_logger",
+                                                            "_custom_logger",])
                 print("Epoch: {}, model saved!".format(self.num_timesteps))
         callback.on_training_end()
 
