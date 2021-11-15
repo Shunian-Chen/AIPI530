@@ -372,7 +372,8 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                     self.train(batch_size=self.batch_size, gradient_steps=gradient_steps)
             if self.num_timesteps % save_period == 0:
                 self.save(save_path + "_model", include = [ "policy"])
-                print("Steps: {}, model saved at {}!".format(self.num_timesteps, save_path))
+                time_elapse = time.time() - self.start_time
+                print("Steps: {}, use time: {}, average reward: {}!".format(self.num_timesteps, time_elapse, safe_mean([ep_info["r"] for ep_info in self.ep_info_buffer])))
         callback.on_training_end()
 
         return self
