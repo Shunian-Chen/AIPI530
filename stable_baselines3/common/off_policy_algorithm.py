@@ -371,12 +371,7 @@ class OffPolicyAlgorithm(BaseAlgorithm):
                 if gradient_steps > 0:
                     self.train(batch_size=self.batch_size, gradient_steps=gradient_steps)
             if self.num_timesteps % save_period == 0:
-                self.save(save_path + "_model", include = [ "policy",
-                                                            "device",
-                                                            "env",
-                                                            "rollout_buffer",
-                                                            "_vec_normalize_env",
-                                                            "_episode_storage",])
+                self.save(save_path + "_model", include = [ "policy"])
                 print("Steps: {}, model saved at {}!".format(self.num_timesteps, save_path))
         callback.on_training_end()
 
